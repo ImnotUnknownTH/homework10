@@ -91,7 +91,7 @@
                     echo "<td>" . $row["clock_speed"] . " </td>";
                     echo "<td>" . $row["price"] . " </td>";
                     echo "<td>" . $row["release_year"] . " </td>";
-                    echo '<td><a type="button" href="show.php?action_even=de&id=' . $row['id'] . '" title="ลบข้อมูล" onclick="return confirm(\'ต้องการจะลบข้อมูลรายชื่อ ' . $row['id'] . ' ' . $row['brand'] . ' ' . $row['model'] . '?\')" class="btn btn-danger btn-sm"> ลบข้อมูล </a></td>';
+                    echo '<td><a type="button" href="homework.php?action_even=de&id=' . $row['id'] . '" title="ลบข้อมูล" onclick="return confirm(\'ต้องการจะลบข้อมูลรายชื่อ ' . $row['id'] . ' ' . $row['brand'] . ' ' . $row['model'] . '?\')" class="btn btn-danger btn-sm"> ลบข้อมูล </a></td>';
                     echo "</tr>";
                 }
             } else {
