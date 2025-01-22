@@ -7,7 +7,7 @@
     ?>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ข้อมูลพนักงาน</title>
+    <title>ข้อมูลการ์ดจอ</title>
     <!--bs -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- font -->
@@ -37,14 +37,14 @@
     if (isset($_GET['action_even']) == 'delete') {
         //echo "Test";
 
-        $employee_id = $_GET['employee_id'];
-        $sql = "SELECT * FROM employees WHERE employee_id=$employee_id";
+        $id = $_GET['id'];
+        $sql = "SELECT * FROM graphics_cards WHERE id=$id";
         // echo $sql;
         $result = $conn->query($sql);
         // $lvsql =mysqli_query($conn,$sql);
         if ($result->num_rows > 0) {
             // sql to delete a record
-            $sql = "DELETE FROM employees WHERE employee_id =$employee_id";
+            $sql = "DELETE FROM graphics_cards WHERE id=$id";
 
             if ($conn->query($sql) === TRUE) {
                 echo "<div class='alert alert-success'>ลบข้อมูลสำเร็จ</div>";
@@ -58,41 +58,40 @@
     }
     ?>
 
-    <h1>แสดงข้อมูลพนักงาน</h1>
+    <h1>แสดงข้อมูลการ์ดจอ</h1>
     <h2>พัฒนาโดย 664485021 นายปัญญาวัฒน์ ภุมมะดิลก</h2>
     <table id="example" class="table table-striped" style="width:100%">
         <thead>
             <tr>
                 <th>รหัส</th>
-                <th>ชื่อ</th>
-                <th>นามสกุล</th>
-                <th>เพศ</th>
-                <th>อายุ</th>
-                <th>ตำแหน่ง</th>
-                <th>เงินเดือน</th>
+                <th>แบรน</th>
+                <th>โมเดล</th>
+                <th>ขนาดmemory</th>
+                <th>ชนิดของmemory</th>
+                <th>ความเร็วพัดลม</th>
+                <th>ราคา</th>
+                <th>วันที่จำหน่าย</th>
                 <th>จัดการข้อมูล</th>
             </tr>
         </thead>
         <tbody>
             <?php
-            $sql = "SELECT * FROM employees";
+            $sql = "SELECT * FROM graphics_cards";
             $result = $conn->query($sql);
 
             if ($result->num_rows > 0) {
                 // output data of each row
                 while ($row = $result->fetch_assoc()) {
                     echo "<tr>";
-                    echo "<td>" . $row["employee_id"] . " </td>";
-                    echo "<td>" . $row["first_name"] . " </td>";
-                    echo "<td>" . $row["last_name"] . " </td>";
-                    echo "<td>" . $row["gender"] . " </td>";
-                    echo "<td>" . $row["age"] . " </td>";
-                    echo "<td>" . $row["department"] . " </td>";
-                    echo "<td>" . $row["salary"] . " </td>";
-                    echo '<td><a type="button" href="show.php?action_even=del&employee_id=' . $row['employee_id'] . '" title="ลบข้อมูล" onclick="return confirm(\'ต้องการจะลบข้อมูลรายชื่อ ' . $row['employee_id'] . ' ' . $row['first_name'] . ' ' . $row['last_name'] . '?\')" class="btn btn-danger btn-sm"> ลบข้อมูล </a>  
-                    
-        <a type="button" href="edit.php?action_even=edit&employee_id=' . $row['employee_id'] . '" 
-    title="แก้ไขข้อมูล" onclick="return confirm(\'ต้องการจะแก้ไขข้อมูลรายชื่อ ' . $row['employee_id'] . ' ' . $row['first_name'] . ' ' . $row['last_name'] . '?\')" class="btn btn-primary btn-sm"> แก้ไขข้อมูล </a> </td>';
+                    echo "<td>" . $row["id"] . " </td>";
+                    echo "<td>" . $row["brand"] . " </td>";
+                    echo "<td>" . $row["model"] . " </td>";
+                    echo "<td>" . $row["memory_size"] . " </td>";
+                    echo "<td>" . $row["memory_type"] . " </td>";
+                    echo "<td>" . $row["clock_speed"] . " </td>";
+                    echo "<td>" . $row["price"] . " </td>";
+                    echo "<td>" . $row["release_year"] . " </td>";
+                    echo '<td><a type="button" href="show.php?action_even=de&id=' . $row['id'] . '" title="ลบข้อมูล" onclick="return confirm(\'ต้องการจะลบข้อมูลรายชื่อ ' . $row['id'] . ' ' . $row['brand'] . ' ' . $row['model'] . '?\')" class="btn btn-danger btn-sm"> ลบข้อมูล </a></td>';
                     echo "</tr>";
                 }
             } else {
